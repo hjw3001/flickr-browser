@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.activity.userPhotos" needslogin="1" needssigning="1" requiredperms="1">
+	<description>Returns a list of recent activity on photos belonging to the calling user. &lt;b&gt;Do not poll this method more than once an hour&lt;/b&gt;.</description>
+	<response>&lt;items&gt;
+	&lt;item type=&quot;photoset&quot; id=&quot;395&quot; owner=&quot;12037949754@N01&quot; 
+		primary=&quot;6521&quot; secret=&quot;5a3cc65d72&quot; server=&quot;2&quot; 
+		commentsold=&quot;1&quot; commentsnew=&quot;1&quot;
+		views=&quot;33&quot; photos=&quot;7&quot; more=&quot;0&quot;&gt;
+		&lt;title&gt;A set of photos&lt;/title&gt;
+		&lt;activity&gt;
+			&lt;event type=&quot;comment&quot;
+			user=&quot;12037949754@N01&quot; username=&quot;Bees&quot;
+			dateadded=&quot;1144086424&quot;&gt;yay&lt;/event&gt;
+		&lt;/activity&gt;
+	&lt;/item&gt;
+
+	&lt;item type=&quot;photo&quot; id=&quot;10289&quot; owner=&quot;12037949754@N01&quot;
+		secret=&quot;34da0d3891&quot; server=&quot;2&quot;
+		commentsold=&quot;1&quot; commentsnew=&quot;1&quot;
+		notesold=&quot;0&quot; notesnew=&quot;1&quot;
+		views=&quot;47&quot; faves=&quot;0&quot; more=&quot;0&quot;&gt;
+		&lt;title&gt;A photo&lt;/title&gt;
+		&lt;activity&gt;
+			&lt;event type=&quot;comment&quot;
+			user=&quot;12037949754@N01&quot; username=&quot;Bees&quot;
+			dateadded=&quot;1133806604&quot;&gt;test&lt;/event&gt;
+			&lt;event type=&quot;note&quot;
+			user=&quot;12037949754@N01&quot; username=&quot;Bees&quot;
+			dateadded=&quot;1118785229&quot;&gt;nice&lt;/event&gt;
+		&lt;/activity&gt;
+	&lt;/item&gt;
+&lt;/items&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="timeframe" optional="1">The timeframe in which to return updates for. This can be specified in days (&lt;code&gt;'2d'&lt;/code&gt;) or hours (&lt;code&gt;'4h'&lt;/code&gt;). The default behavoir is to return changes since the beginning of the previous user session.</argument>
+	<argument name="per_page" optional="1">Number of items to return per page. If this argument is omitted, it defaults to 10. The maximum allowed value is 50.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="96" message="Invalid signature">The passed signature was invalid.</error>
+	<error code="97" message="Missing signature">The call required signing but no signature was sent.</error>
+	<error code="98" message="Login failed / Invalid auth token">The login details or auth token passed were invalid.</error>
+	<error code="99" message="User not logged in / Insufficient permissions">The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

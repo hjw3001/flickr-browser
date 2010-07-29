@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.getChildrenWithPhotosPublic" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a list of locations with public photos that are parented by a Where on Earth (WOE) or Places ID.</description>
+	<response>&lt;places total=&quot;79&quot;&gt;
+   &lt;place place_id=&quot;HznQfdKbB58biy8sdA&quot; woeid=&quot;26332794&quot;
+      latitude=&quot;45.498&quot; longitude=&quot;-73.575&quot;
+      place_url=&quot;/Canada/Quebec/Montreal  /Montreal+Golden+Square+Mile&quot;
+      place_type=&quot;neighbourhood&quot; photo_count=&quot;2717&quot;&gt;
+      Montreal Golden Square Mile, Montreal, QC, CA, Canada
+   &lt;/place&gt;
+   &lt;place place_id=&quot;K1rYWmGbB59rwn7lOA&quot; woeid=&quot;26332799&quot;
+      latitude=&quot;45.502&quot; longitude=&quot;-73.578&quot;
+      place_url=&quot;/Canada/Quebec/Montreal/Downtown+Montr%C3%A9al&quot;
+      place_type=&quot;neighbourhood&quot; photo_count=&quot;2317&quot;&gt;
+      Downtown Montréal, Montreal, QC, CA, Canada
+  &lt;/place&gt;
+
+   &lt;!-- and so on... --&gt;
+
+&lt;/places&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="place_id" optional="1">A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)</argument>
+	<argument name="woe_id" optional="1">A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

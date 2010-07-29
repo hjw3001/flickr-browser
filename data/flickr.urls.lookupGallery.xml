@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.urls.lookupGallery" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Returns gallery info, by url.</description>
+	<response>&lt;gallery id=&quot;6065-72157617483228192&quot; url=&quot;/photos/straup/galleries/72157617483228192&quot; owner=&quot;35034348999@N01&quot; 
+primary_photo_id=&quot;292882708&quot; 
+date_create=&quot;1241028772&quot; date_update=&quot;1270111667&quot; 
+count_photos=&quot;17&quot; count_videos=&quot;0&quot; server=&quot;112&quot; farm=&quot;1&quot; secret=&quot;7f29861bc4&quot;&gt;
+	&lt;title&gt;Cat Pictures I've Sent To Kevin Collins&lt;/title&gt;
+	&lt;description /&gt;
+&lt;/gallery&gt;</response>
+	<explanation>This is the same format returned by &lt;a href=&quot;http://www.flickr.com/services/api/flickr.galleries.getInfo.html&quot;&gt;flickr.galleries.getInfo&lt;/a&gt;.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="url" optional="0">The gallery's URL.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

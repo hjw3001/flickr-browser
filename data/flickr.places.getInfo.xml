@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.getInfo" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Get informations about a place.</description>
+	<response>&lt;place place_id=&quot;4hLQygSaBJ92&quot; woeid=&quot;3534&quot;
+   latitude=&quot;45.512&quot; longitude=&quot;-73.554&quot;
+   place_url=&quot;/Canada/Quebec/Montreal&quot; place_type=&quot;locality&quot;
+   has_shapedata=&quot;1&quot; timezone=&quot;America/Toronto&quot;&gt;
+   &lt;locality place_id=&quot;4hLQygSaBJ92&quot; woeid=&quot;3534&quot;
+      latitude=&quot;45.512&quot; longitude=&quot;-73.554&quot;
+      place_url=&quot;/Canada/Quebec/Montreal&quot;&gt;Montreal&lt;/locality&gt;
+   &lt;county place_id=&quot;cFBi9x6bCJ8D5rba1g&quot; woeid=&quot;29375198&quot;
+      latitude=&quot;45.551&quot; longitude=&quot;-73.600&quot; 
+      place_url=&quot;/cFBi9x6bCJ8D5rba1g&quot;&gt;Montréal&lt;/county&gt;
+   &lt;region place_id=&quot;CrZUvXebApjI0.72&quot; woeid=&quot;2344924&quot; 
+      latitude=&quot;53.890&quot; longitude=&quot;-68.429&quot;
+      place_url=&quot;/Canada/Quebec&quot;&gt;Quebec&lt;/region&gt;
+   &lt;country place_id=&quot;EESRy8qbApgaeIkbsA&quot; woeid=&quot;23424775&quot;
+      latitude=&quot;62.358&quot; longitude=&quot;-96.582&quot; 
+      place_url=&quot;/Canada&quot;&gt;Canada&lt;/country&gt;
+   &lt;shapedata created=&quot;1223513357&quot; alpha=&quot;0.012359619140625&quot;
+      count_points=&quot;34778&quot; count_edges=&quot;52&quot;
+      has_donuthole=&quot;1&quot; is_donuthole=&quot;1&quot;&gt;
+      &lt;polylines&gt;
+         &lt;polyline&gt;
+            45.427627563477,-73.589645385742 45.428966522217,-73.587898254395, etc...
+         &lt;/polyline&gt;
+      &lt;/polylines&gt;
+      &lt;urls&gt;
+         &lt;shapefile&gt;
+         http://farm4.static.flickr.com/3228/shapefiles/3534_20081111_0a8afe03c5.tar.gz
+         &lt;/shapefile&gt;
+      &lt;/urls&gt;
+   &lt;/shapedata&gt;
+&lt;/place&gt;</response>
+	<explanation>  </explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="place_id" optional="1">A Flickr Places ID. &lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+	<argument name="woe_id" optional="1">A Where On Earth (WOE) ID. &lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

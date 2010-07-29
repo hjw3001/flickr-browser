@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.findByLatLon" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a place ID for a latitude, longitude and accuracy triple.&lt;br /&gt;&lt;br /&gt;
+The flickr.places.findByLatLon method is not meant to be a (reverse) geocoder in the traditional sense. It is designed to allow users to find photos for &quot;places&quot; and will round up to the nearest place type to which corresponding place IDs apply.&lt;br /&gt;&lt;br /&gt;
+For example, if you pass it a street level coordinate it will return the city that contains the point rather than the street, or building, itself.&lt;br /&gt;&lt;br /&gt;
+It will also truncate latitudes and longitudes to three decimal points.
+
+</description>
+	<response>&lt;places latitude=&quot;37.76513627957266&quot; longitude=&quot;-122.42020770907402&quot; accuracy=&quot;16&quot; total=&quot;1&quot;&gt;
+   &lt;place place_id=&quot;Y12JWsKbApmnSQpbQg&quot; woeid=&quot;23512048&quot;
+      latitude=&quot;37.765&quot; longitude=&quot;-122.424&quot; 
+      place_url=&quot;/United+States/California/San+Francisco/Mission+Dolores&quot;
+      place_type=&quot;neighbourhood&quot; place_type_id=&quot;22&quot; 
+      timezone=&quot;America/Los_Angeles&quot;
+      name=&quot;Mission Dolores, San Francisco, CA, US, United States&quot;/&gt;
+&lt;/places&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="lat" optional="0">The latitude whose valid range is -90 to 90. Anything more than 4 decimal places will be truncated.</argument>
+	<argument name="lon" optional="0">The longitude whose valid range is -180 to 180. Anything more than 4 decimal places will be truncated.</argument>
+	<argument name="accuracy" optional="1">Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. The default is 16.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

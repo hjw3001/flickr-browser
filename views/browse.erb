@@ -1,0 +1,38 @@
+<h1><%= @xml_data[:method].name %></h1>
+<div class="MethodDescription"><%= CGI.unescapeHTML(@xml_data[:method].description) %></div>
+
+<h3>Authentication</h3>
+
+<h3>Arguments</h3>
+<dl>
+  <% for argu in @xml_data[:arguments] %>
+  <dt>
+    <b>
+      <code><%= argu.name %></code>
+    </b>
+  <% if argu.optional == 0 %>
+    (Required)
+  <% else %>
+    (Optional)
+  <% end %>
+  </dt>
+  <dd><%= CGI.unescapeHTML(argu) %></dd>
+  <% end %>
+</dl>
+
+<h3>Example Response</h3>
+<pre><%= @xml_data[:method].response %></pre>
+
+<h3>Error Codes</h3>
+<dl>
+  <% for error_code in @xml_data.errors %>
+  <dt>
+    <b>
+      <code><%= error_code.code %>: <%= error_code.message %></code>
+    </b>
+  </dt>
+  <dd><%= error_code %></dd>
+  <% end %>
+</dl>
+
+<h3>API Explorer</h3>

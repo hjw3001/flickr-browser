@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.tagsForPlace" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID</description>
+	<response>&lt;tags total=&quot;100&quot;&gt;
+   &lt;tag count=&quot;31775&quot;&gt;montreal&lt;/tag&gt;
+   &lt;tag count=&quot;20585&quot;&gt;canada&lt;/tag&gt;
+   &lt;tag count=&quot;12319&quot;&gt;montréal&lt;/tag&gt;
+   &lt;tag count=&quot;12154&quot;&gt;quebec&lt;/tag&gt;
+   &lt;tag count=&quot;6471&quot;&gt;québec&lt;/tag&gt;
+   &lt;tag count=&quot;2173&quot;&gt;sylvainmichaud&lt;/tag&gt;
+   &lt;tag count=&quot;2091&quot;&gt;nikon&lt;/tag&gt;
+   &lt;tag count=&quot;1541&quot;&gt;lucbus&lt;/tag&gt;
+   &lt;tag count=&quot;1539&quot;&gt;music&lt;/tag&gt;
+   &lt;tag count=&quot;1479&quot;&gt;urban&lt;/tag&gt;
+   &lt;tag count=&quot;1425&quot;&gt;lucbussieres&lt;/tag&gt;
+   &lt;tag count=&quot;1419&quot;&gt;festival&lt;/tag&gt;
+   &lt;!-- and so on --&gt;
+&lt;/tags&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="woe_id" optional="1">A Where on Earth identifier to use to filter photo clusters.&lt;br /&gt;&lt;br /&gt;
+&lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+	<argument name="place_id" optional="1">A Flickr Places identifier to use to filter photo clusters.&lt;br /&gt;&lt;br /&gt;
+&lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+	<argument name="min_upload_date" optional="1">Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.</argument>
+	<argument name="max_upload_date" optional="1">Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.</argument>
+	<argument name="min_taken_date" optional="1">Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.</argument>
+	<argument name="max_taken_date" optional="1">Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

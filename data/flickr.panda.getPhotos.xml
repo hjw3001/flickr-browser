@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.panda.getPhotos" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Ask the &lt;a href=&quot;http://www.flickr.com/explore/panda&quot;&gt;Flickr Pandas&lt;/a&gt; for a list of recent public (and &quot;safe&quot;) photos.</description>
+	<response>&lt;photos interval=&quot;60000&quot; lastupdate=&quot;1235765058272&quot; total=&quot;120&quot; panda=&quot;ling ling&quot;&gt;
+    &lt;photo title=&quot;Shorebirds at Pillar Point&quot; id=&quot;3313428913&quot; secret=&quot;2cd3cb44cb&quot;
+        server=&quot;3609&quot; farm=&quot;4&quot; owner=&quot;72442527@N00&quot; ownername=&quot;Pat Ulrich&quot;/&gt;
+    &lt;photo title=&quot;Battle of the sky&quot; id=&quot;3313713993&quot; secret=&quot;3f7f51500f&quot;
+        server=&quot;3382&quot; farm=&quot;4&quot; owner=&quot;10459691@N05&quot; ownername=&quot;Sven Ericsson&quot;/&gt;
+    &lt;!-- and so on --&gt;
+&lt;/photos&gt;</response>
+	<explanation>When calling this API method please ensure that your code uses the &lt;strong&gt;lastupdate&lt;/strong&gt; and &lt;strong&gt;interval&lt;/strong&gt; attributes to determine when to request new photos. &lt;em&gt;lastupdate&lt;/em&gt; is a Unix timestamp indicating when the list of photos was generated and &lt;em&gt;interval&lt;/em&gt; is the number of seconds to wait before polling the Flickr API again.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="panda_name" optional="0">The name of the panda to ask for photos from. There are currently three pandas named:&lt;br /&gt;&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://flickr.com/photos/ucumari/126073203/&quot;&gt;ling ling&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://flickr.com/photos/lynnehicks/136407353&quot;&gt;hsing hsing&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://flickr.com/photos/perfectpandas/1597067182/&quot;&gt;wang wang&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;br /&gt;You can fetch a list of all the current pandas using the &lt;a href=&quot;/services/api/flickr.panda.getList.html&quot;&gt;flickr.panda.getList&lt;/a&gt; API method.</argument>
+	<argument name="extras" optional="1">A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;date_upload&lt;/code&gt;, &lt;code&gt;date_taken&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;icon_server&lt;/code&gt;, &lt;code&gt;original_format&lt;/code&gt;, &lt;code&gt;last_update&lt;/code&gt;, &lt;code&gt;geo&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;, &lt;code&gt;machine_tags&lt;/code&gt;, &lt;code&gt;o_dims&lt;/code&gt;, &lt;code&gt;views&lt;/code&gt;, &lt;code&gt;media&lt;/code&gt;, &lt;code&gt;path_alias&lt;/code&gt;, &lt;code&gt;url_sq&lt;/code&gt;, &lt;code&gt;url_t&lt;/code&gt;, &lt;code&gt;url_s&lt;/code&gt;, &lt;code&gt;url_m&lt;/code&gt;, &lt;code&gt;url_o&lt;/code&gt;</argument>
+	<argument name="per_page" optional="1">Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

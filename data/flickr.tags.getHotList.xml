@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.tags.getHotList" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Returns a list of hot tags for the given period.</description>
+	<response>&lt;hottags period=&quot;day&quot; count=&quot;6&quot;&gt;
+	&lt;tag score=&quot;20&quot;&gt;northerncalifornia&lt;/tag&gt;
+	&lt;tag score=&quot;18&quot;&gt;top20&lt;/tag&gt;
+	&lt;tag score=&quot;15&quot;&gt;keychain&lt;/tag&gt;
+	&lt;tag score=&quot;10&quot;&gt;zb&lt;/tag&gt;
+	&lt;tag score=&quot;9&quot;&gt;selfportraittuesday&lt;/tag&gt;
+	&lt;tag score=&quot;4&quot;&gt;jan06&lt;/tag&gt;
+&lt;/hottags&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="period" optional="1">The period for which to fetch hot tags. Valid values are &lt;code&gt;day&lt;/code&gt; and &lt;code&gt;week&lt;/code&gt; (defaults to &lt;code&gt;day&lt;/code&gt;).</argument>
+	<argument name="count" optional="1">The number of tags to return. Defaults to 20. Maximum allowed value is 200.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

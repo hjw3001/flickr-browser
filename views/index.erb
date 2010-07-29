@@ -1,0 +1,5 @@
+<ul>
+<% for xml in @browser.xml_files %>
+  <li><a href="/browse/<%= xml[:method].name %>"><%= xml[:method].name %></a></li>
+<% end %>
+</ul>

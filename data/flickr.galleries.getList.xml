@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.galleries.getList" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return the list of galleries created by a user.  Sorted from newest to oldest.</description>
+	<response>&lt;galleries total=&quot;9&quot; page=&quot;1&quot; pages=&quot;1&quot; per_page=&quot;100&quot; user_id=&quot;34427469121@N01&quot;&gt;
+   &lt;gallery id=&quot;5704-72157622637971865&quot; 
+             url=&quot;http://www.flickr.com/photos/george/galleries/72157622637971865&quot; 
+             owner=&quot;34427469121@N01&quot; date_create=&quot;1257711422&quot; date_update=&quot;1260360756&quot;
+             primary_photo_id=&quot;107391222&quot;  primary_photo_server=&quot;39&quot; 
+             primary_photo_farm=&quot;1&quot; primary_photo_secret=&quot;ffa&quot;
+             count_photos=&quot;16&quot; count_videos=&quot;2&quot; &gt;
+       &lt;title&gt;I like me some black &amp;amp; white&lt;/title&gt;
+       &lt;description&gt;black and whites&lt;/description&gt;
+   &lt;gallery&gt;
+   &lt;gallery id=&quot;5704-72157622566655097&quot; 
+            url=&quot;http://www.flickr.com/photos/george/galleries/72157622566655097&quot; 
+            owner=&quot;34427469121@N01&quot; date_create=&quot;1256852229&quot; date_update=&quot;1260462343&quot; 
+            primary_photo_id=&quot;497374910&quot; primary_photo_server=&quot;231&quot; 
+            primary_photo_farm=&quot;1&quot; primary_photo_secret=&quot;9ae0f&quot;
+            count_photos=&quot;18&quot; count_videos=&quot;0&quot; &gt;
+       &lt;title&gt;People Sleeping in Libraries&lt;/title&gt;
+       &lt;description /&gt;
+   &lt;gallery&gt;
+&lt;/galleries&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="user_id" optional="0">The NSID of the user to get a galleries list for. If none is specified, the calling user is assumed.</argument>
+	<argument name="per_page" optional="1">Number of galleries to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

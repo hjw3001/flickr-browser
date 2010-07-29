@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.placesForUser" needslogin="1" needssigning="1" requiredperms="1">
+	<description>Return a list of the top 100 unique places clustered by a given placetype for a user. </description>
+	<response>&lt;places total=&quot;1&quot;&gt;
+   &lt;place place_id=&quot;kH8dLOubBZRvX_YZ&quot; woeid=&quot;2487956&quot;
+               latitude=&quot;37.779&quot; longitude=&quot;-122.420&quot;
+               place_url=&quot;/United+States/California/San+Francisco&quot;
+               place_type=&quot;locality&quot;
+               photo_count=&quot;156&quot;&gt;San Francisco, California&lt;/place&gt;
+&lt;/place&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="place_type_id" optional="1">The numeric ID for a specific place type to cluster photos by. &lt;br /&gt;&lt;br /&gt;
+
+Valid place type IDs are :
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;22&lt;/strong&gt;: neighbourhood&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;7&lt;/strong&gt;: locality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;8&lt;/strong&gt;: region&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;12&lt;/strong&gt;: country&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;29&lt;/strong&gt;: continent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;
+&lt;span style=&quot;font-style:italic;&quot;&gt;The &quot;place_type&quot; argument has been deprecated in favor of the &quot;place_type_id&quot; argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the &lt;a href=&quot;http://www.flickr.com/services/api/flickr.places.getPlaceTypes.html&quot;&gt;flickr.places.getPlaceTypes&lt;/a&gt; method. (While optional, you must pass either a valid place type or place type ID.)&lt;/span&gt;</argument>
+	<argument name="place_type" optional="1">A specific place type to cluster photos by. &lt;br /&gt;&lt;br /&gt;
+
+Valid place types are :
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;neighbourhood&lt;/strong&gt; (and neighborhood)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;locality&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;region&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;country&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;continent&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;&lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid place type or place type ID.)&lt;/span&gt;</argument>
+	<argument name="woe_id" optional="1">A Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by &lt;strong&gt;locality&lt;/strong&gt; in the United States (WOE ID &lt;strong&gt;23424977&lt;/strong&gt;).&lt;br /&gt;&lt;br /&gt;
+&lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+	<argument name="place_id" optional="1">A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by &lt;strong&gt;locality&lt;/strong&gt; in the United States (Place ID &lt;strong&gt;4KO02SibApitvSBieQ&lt;/strong&gt;).&lt;br /&gt;&lt;br /&gt;
+&lt;span style=&quot;font-style:italic;&quot;&gt;(While optional, you must pass either a valid Places ID or a WOE ID.)&lt;/span&gt;</argument>
+	<argument name="threshold" optional="1">The minimum number of photos that a place type must have to be included. If the number of photos is lowered then the parent place type for that place will be used.&lt;br /&gt;&lt;br /&gt;
+
+For example if you only have &lt;strong&gt;3&lt;/strong&gt; photos taken in the locality of Montreal&lt;/strong&gt; (WOE ID 3534) but your threshold is set to &lt;strong&gt;5&lt;/strong&gt; then those photos will be &quot;rolled up&quot; and included instead with a place record for the region of Quebec (WOE ID 2344924).</argument>
+	<argument name="min_upload_date" optional="1">Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.</argument>
+	<argument name="max_upload_date" optional="1">Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.</argument>
+	<argument name="min_taken_date" optional="1">Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.</argument>
+	<argument name="max_taken_date" optional="1">Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="96" message="Invalid signature">The passed signature was invalid.</error>
+	<error code="97" message="Missing signature">The call required signing but no signature was sent.</error>
+	<error code="98" message="Login failed / Invalid auth token">The login details or auth token passed were invalid.</error>
+	<error code="99" message="User not logged in / Insufficient permissions">The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

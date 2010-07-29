@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.stats.getPopularPhotos" needslogin="1" needssigning="1" requiredperms="1">
+	<description>List the photos with the most views, comments or favorites</description>
+	<response>&lt;photos page=&quot;2&quot; pages=&quot;89&quot; perpage=&quot;10&quot; total=&quot;881&quot;&gt;
+	&lt;photo id=&quot;2636&quot; owner=&quot;47058503995@N01&quot; 
+		secret=&quot;a123456&quot; server=&quot;2&quot; title=&quot;test_04&quot;
+		ispublic=&quot;1&quot; isfriend=&quot;0&quot; isfamily=&quot;0&quot;&gt;
+		&lt;stats views=&quot;941&quot; comments=&quot;18&quot; favorites=&quot;2&quot;/&gt;
+	&lt;/photo&gt;
+	&lt;photo id=&quot;2635&quot; owner=&quot;47058503995@N01&quot;
+		secret=&quot;b123456&quot; server=&quot;2&quot; title=&quot;test_03&quot;
+		ispublic=&quot;0&quot; isfriend=&quot;1&quot; isfamily=&quot;1&quot;&gt;
+		&lt;stats views=&quot;141&quot; comments=&quot;1&quot; favorites=&quot;2&quot;/&gt;
+	&lt;/photo&gt;
+&lt;/photos&gt;</response>
+	<explanation>&lt;p&gt;This method returns the standard photo list xml.&lt;/p&gt;
+
+&lt;p&gt;In addition each photo element contains a &lt;code&gt;&amp;lt;stats&amp;gt;&lt;/code&gt; element. This has attributes for the view, comment and favorite counts for the requested day.&lt;/p&gt;
+
+&lt;p&gt;To map &lt;code&gt;&amp;lt;photo&amp;gt;&lt;/code&gt; elements to urls, please read the &lt;a href=&quot;misc.urls.html&quot;&gt;url documentation&lt;/a&gt;.&lt;/p&gt;
+</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="date" optional="1">Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. 
+
+A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.
+
+If no date is provided, all time view counts will be returned.</argument>
+	<argument name="sort" optional="1">The order in which to sort returned photos. Defaults to views. The possible values are views, comments and favorites. 
+
+Other sort options are available through &lt;a href=&quot;/services/api/flickr.photos.search.html&quot;&gt;flickr.photos.search&lt;/a&gt;.</argument>
+	<argument name="per_page" optional="1">Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="96" message="Invalid signature">The passed signature was invalid.</error>
+	<error code="97" message="Missing signature">The call required signing but no signature was sent.</error>
+	<error code="98" message="Login failed / Invalid auth token">The login details or auth token passed were invalid.</error>
+	<error code="99" message="User not logged in / Insufficient permissions">The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

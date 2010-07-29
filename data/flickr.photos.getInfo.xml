@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.photos.getInfo" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Get information about a photo. The calling user must have permission to view the photo.</description>
+	<response>&lt;photo id=&quot;2733&quot; secret=&quot;123456&quot; server=&quot;12&quot;
+	isfavorite=&quot;0&quot; license=&quot;3&quot; rotation=&quot;90&quot; 
+	originalsecret=&quot;1bc09ce34a&quot; originalformat=&quot;png&quot;&gt;
+	&lt;owner nsid=&quot;12037949754@N01&quot; username=&quot;Bees&quot;
+		realname=&quot;Cal Henderson&quot; location=&quot;Bedford, UK&quot; /&gt;
+	&lt;title&gt;orford_castle_taster&lt;/title&gt;
+	&lt;description&gt;hello!&lt;/description&gt;
+	&lt;visibility ispublic=&quot;1&quot; isfriend=&quot;0&quot; isfamily=&quot;0&quot; /&gt;
+	&lt;dates posted=&quot;1100897479&quot; taken=&quot;2004-11-19 12:51:19&quot;
+		takengranularity=&quot;0&quot; lastupdate=&quot;1093022469&quot; /&gt;
+	&lt;permissions permcomment=&quot;3&quot; permaddmeta=&quot;2&quot; /&gt;
+	&lt;editability cancomment=&quot;1&quot; canaddmeta=&quot;1&quot; /&gt;
+	&lt;comments&gt;1&lt;/comments&gt;
+	&lt;notes&gt;
+		&lt;note id=&quot;313&quot; author=&quot;12037949754@N01&quot;
+			authorname=&quot;Bees&quot; x=&quot;10&quot; y=&quot;10&quot;
+			w=&quot;50&quot; h=&quot;50&quot;&gt;foo&lt;/note&gt;
+	&lt;/notes&gt;
+	&lt;tags&gt;
+		&lt;tag id=&quot;1234&quot; author=&quot;12037949754@N01&quot; raw=&quot;woo yay&quot;&gt;wooyay&lt;/tag&gt;
+		&lt;tag id=&quot;1235&quot; author=&quot;12037949754@N01&quot; raw=&quot;hoopla&quot;&gt;hoopla&lt;/tag&gt;
+	&lt;/tags&gt;
+	&lt;urls&gt;
+		&lt;url type=&quot;photopage&quot;&gt;http://www.flickr.com/photos/bees/2733/&lt;/url&gt; 
+	&lt;/urls&gt;
+&lt;/photo&gt;</response>
+	<explanation>&lt;p&gt;The &lt;code&gt;&amp;lt;permissions&amp;gt;&lt;/code&gt; element is only returned for photos owned by the calling user. The &lt;code&gt;isfavorite&lt;/code&gt; attribute only makes sense for logged in users who don't own the photo. The &lt;code&gt;rotation&lt;/code&gt; attribute is the current clockwise rotation, in degrees, by which the smaller image sizes differ from the original image.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;&amp;lt;date&amp;gt;&lt;/code&gt; element's &lt;code&gt;lastupdate&lt;/code&gt; attribute is a Unix timestamp indicating the last time the photo, or any of its metadata (tags, comments, etc.) was modified.&lt;/p&gt;</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="photo_id" optional="0">The id of the photo to get information for.</argument>
+	<argument name="secret" optional="1">The secret for the photo. If the correct secret is passed then permissions checking is skipped. This enables the 'sharing' of individual photos by passing around the id and secret.</argument>
+	<argument name="humandates" optional="1" />
+	<argument name="privacy_filter" optional="1" />
+	<argument name="get_contexts" optional="1" />
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

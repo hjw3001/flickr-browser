@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.people.getInfo" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Get information about a user.</description>
+	<response>&lt;person nsid=&quot;12037949754@N01&quot; ispro=&quot;0&quot; iconserver=&quot;122&quot; iconfarm=&quot;1&quot;&gt;
+	&lt;username&gt;bees&lt;/username&gt;
+	&lt;realname&gt;Cal Henderson&lt;/realname&gt;
+        &lt;mbox_sha1sum&gt;eea6cd28e3d0003ab51b0058a684d94980b727ac&lt;/mbox_sha1sum&gt;
+	&lt;location&gt;Vancouver, Canada&lt;/location&gt;
+	&lt;photosurl&gt;http://www.flickr.com/photos/bees/&lt;/photosurl&gt; 
+	&lt;profileurl&gt;http://www.flickr.com/people/bees/&lt;/profileurl&gt; 
+	&lt;photos&gt;
+		&lt;firstdate&gt;1071510391&lt;/firstdate&gt;
+		&lt;firstdatetaken&gt;1900-09-02 09:11:24&lt;/firstdatetaken&gt;
+		&lt;count&gt;449&lt;/count&gt;
+	&lt;/photos&gt;
+&lt;/person&gt;</response>
+	<explanation>&lt;p&gt;The &lt;code&gt;firstdate&lt;/code&gt; element contains the unix timestamp of the first photo uploaded by the user. The &lt;code&gt;firstdatetaken&lt;/code&gt; element contains the mysql datetime of the first photo taken by the user.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;iconserver&lt;/code&gt; element is used to build the url to the users' buddyicon - for more information please read the &lt;a href=&quot;/services/api/misc.buddyicons.html&quot;&gt;buddyicon guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+If the API call is authenticated contact information will also be returned as attributes on the person element.  &lt;code&gt;contact&lt;/code&gt;, &lt;code&gt;friend&lt;/code&gt;, and &lt;code&gt;family&lt;/code&gt; are boolean flags describing the relationship between the &lt;a href=&quot;/services/api/auth.spec.html&quot;&gt;authenticated&lt;/a&gt; user, and the person currently being inspected.   &lt;code&gt;revcontact&lt;/code&gt;, &lt;code&gt;revfriend&lt;/code&gt;, and &lt;code&gt;revfamily&lt;/code&gt; is the reciprocal relationship.
+&lt;/p&gt;</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="user_id" optional="0">The NSID of the user to fetch information about.</argument>
+	<argument name="url" optional="0">As an alternative to user_id, load a member based on URL, either photos or people URL.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

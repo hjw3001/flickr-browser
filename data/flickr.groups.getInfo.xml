@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.groups.getInfo" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Get information about a group.</description>
+	<response>&lt;group id=&quot;34427465497@N01&quot; iconserver=&quot;1&quot; lang=&quot;en-us&quot; ispoolmoderated=&quot;0&quot;&gt;
+	&lt;name&gt;GNEverybody&lt;/name&gt;
+	&lt;description&gt;The group for GNE players&lt;/description&gt;
+	&lt;members&gt;69&lt;/members&gt;
+	&lt;privacy&gt;3&lt;/privacy&gt;
+	&lt;throttle count=&quot;10&quot; mode=&quot;month&quot; remaining=&quot;3&quot;/&gt;
+&lt;/group&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="group_id" optional="0">The NSID of the group to fetch information for.</argument>
+	<argument name="lang" optional="1">The language of the group name and description to fetch.  If the language is not found, the primary language of the group will be returned.
+
+Valid values are the same as &lt;a href=&quot;/services/feeds/&quot;&gt;in feeds&lt;/a&gt;.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

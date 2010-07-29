@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.find" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a list of place IDs for a query string.&lt;br /&gt;&lt;br /&gt;
+The flickr.places.find method is &lt;b&gt;not&lt;/b&gt; a geocoder. It will round &lt;q&gt;up&lt;/q&gt; to the nearest place type to which place IDs apply. For example, if you pass it a street level address it will return the city that contains the address rather than the street, or building, itself.</description>
+	<response>&lt;places query=&quot;Alabama&quot; total=&quot;3&quot;&gt;
+   &lt;place place_id=&quot;VrrjuESbApjeFS4.&quot; woeid=&quot;2347559&quot;
+               latitude=&quot;32.614&quot; longitude=&quot;-86.680&quot;
+               place_url=&quot;/United+States/Alabama&quot;
+               place_type=&quot;region&quot;&gt;Alabama, Alabama, United States&lt;/place&gt;
+   &lt;place place_id=&quot;cGHuc0mbApmzEHoP&quot; woeid=&quot;2352520&quot;
+               latitude=&quot;43.096&quot; longitude=&quot;-78.389&quot;
+               place_url=&quot;/United+States/New+York/Alabama&quot;
+               place_type=&quot;locality&quot;&gt;Alabama, New York, United States&lt;/place&gt;
+   &lt;place place_id=&quot;o4yVPEqYBJvFMP8Q&quot; woeid=&quot;1579389&quot;
+               latitude=&quot;-26.866&quot; longitude=&quot;26.583&quot;
+               place_url=&quot;/South+Africa/North+West/Alabama&quot;
+               place_type=&quot;locality&quot;&gt;Alabama, North West, South Africa&lt;/place&gt;
+&lt;/places&gt;</response>
+	<explanation>Each place returned will contain its place ID, corresponding URL (underneath www.flickr.com/places) and place type for disambiguating different locations with the same name.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="query" optional="0">The query string to use for place ID lookups</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

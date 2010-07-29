@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.photos.getSizes" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Returns the available sizes for a photo.  The calling user must have permission to view the photo.</description>
+	<response>&lt;sizes&gt;
+&lt;size label=&quot;Square&quot; width=&quot;75&quot; height=&quot;75&quot;
+      source=&quot;http://farm2.static.flickr.com/1103/567229075_2cf8456f01_s.jpg&quot;
+      url=&quot;http://www.flickr.com/photos/stewart/567229075/sizes/sq/&quot;/&gt;
+&lt;size label=&quot;Thumbnail&quot; width=&quot;100&quot; height=&quot;75&quot;
+      source=&quot;http://farm2.static.flickr.com/1103/567229075_2cf8456f01_t.jpg&quot;
+      url=&quot;http://www.flickr.com/photos/stewart/567229075/sizes/t/&quot;/&gt;
+&lt;size label=&quot;Small&quot; width=&quot;240&quot; height=&quot;180&quot;
+      source=&quot;http://farm2.static.flickr.com/1103/567229075_2cf8456f01_m.jpg&quot;
+      url=&quot;http://www.flickr.com/photos/stewart/567229075/sizes/s/&quot;/&gt;
+&lt;size label=&quot;Medium&quot; width=&quot;500&quot; height=&quot;375&quot;
+      source=&quot;http://farm2.static.flickr.com/1103/567229075_2cf8456f01.jpg&quot;
+      url=&quot;http://www.flickr.com/photos/stewart/567229075/sizes/m/&quot;/&gt;
+&lt;size label=&quot;Original&quot; width=&quot;640&quot; height=&quot;480&quot;
+      source=&quot;http://farm2.static.flickr.com/1103/567229075_6dc09dc6da_o.jpg&quot;
+      url=&quot;http://www.flickr.com/photos/stewart/567229075/sizes/o/&quot;/&gt;
+&lt;/sizes&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="photo_id" optional="0">The id of the photo to fetch size information for.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

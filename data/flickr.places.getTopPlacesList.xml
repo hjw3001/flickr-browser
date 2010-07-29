@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.places.getTopPlacesList" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return the top 100 most geotagged places for a day.</description>
+	<response>&lt;places total=&quot;100&quot; date_start=&quot;1246320000&quot; date_stop=&quot;1246406399&quot;&gt;
+   &lt;place place_id=&quot;4KO02SibApitvSBieQ&quot; woeid=&quot;23424977&quot;
+       latitude=&quot;48.890&quot; longitude=&quot;-116.982&quot; 
+       place_url=&quot;/United+States&quot; place_type=&quot;country&quot; 
+       place_type_id=&quot;12&quot; photo_count=&quot;23371&quot;&gt;United States&lt;/place&gt;
+   &lt;!-- and so on... --&gt;
+&lt;/places&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="place_type_id" optional="0">The numeric ID for a specific place type to cluster photos by. &lt;br /&gt;&lt;br /&gt;
+
+Valid place type IDs are :
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;22&lt;/strong&gt;: neighbourhood&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;7&lt;/strong&gt;: locality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;8&lt;/strong&gt;: region&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;12&lt;/strong&gt;: country&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;29&lt;/strong&gt;: continent&lt;/li&gt;
+&lt;/ul&gt;</argument>
+	<argument name="date" optional="1">A valid date in YYYY-MM-DD format. The default is yesterday.</argument>
+	<argument name="woe_id" optional="1">Limit your query to only those top places belonging to a specific Where on Earth (WOE) identifier.</argument>
+	<argument name="place_id" optional="1">Limit your query to only those top places belonging to a specific Flickr Places identifier.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

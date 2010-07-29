@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.photosets.comments.getList" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Returns the comments for a photoset.</description>
+	<response>&lt;comments photoset_id=&quot;109722179&quot;&gt;
+    &lt;comment id=&quot;6065-109722179-72057594077818641&quot;
+         author=&quot;35468159852@N01&quot; authorname=&quot;Rev Dan Catt&quot; date_create=&quot;1141841470&quot;
+         permalink=&quot;http://www.flickr.com/photos/straup/109722179/#comment72057594077818641&quot;
+         &gt;Umm, I'm not sure, can I get back to you on that one?&lt;/comment&gt;
+&lt;/comments&gt;</response>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="photoset_id" optional="0">The id of the photoset to fetch comments for.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

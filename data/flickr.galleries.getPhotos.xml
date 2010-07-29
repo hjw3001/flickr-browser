@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.galleries.getPhotos" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return the list of photos for a gallery</description>
+	<response>&lt;photos page=&quot;1&quot; pages=&quot;1&quot; perpage=&quot;500&quot; total=&quot;2&quot;&gt;
+	&lt;photo id=&quot;2822546461&quot; owner=&quot;78398753@N00&quot; secret=&quot;2dbcdb589f&quot; server=&quot;1&quot; farm=&quot;1&quot; title=&quot;FOO&quot; 
+     ispublic=&quot;1&quot; isfriend=&quot;0&quot; isfamily=&quot;0&quot; is_primary=&quot;1&quot; has_comment=&quot;1&quot;&gt;
+		&lt;comment&gt;best cat picture ever!&lt;/comment&gt;
+	&lt;/photo&gt;
+	&lt;photo id=&quot;2822544806&quot; owner=&quot;78398753@N00&quot; secret=&quot;bd93cbe917&quot; server=&quot;1&quot; farm=&quot;1&quot; title=&quot;OOK&quot; 
+     ispublic=&quot;1&quot; isfriend=&quot;0&quot; isfamily=&quot;0&quot; is_primary=&quot;0&quot; has_comment=&quot;0&quot; /&gt;
+&lt;/photos&gt;</response>
+	<explanation>Returns a &lt;a href=&quot;http://code.flickr.com/blog/2008/08/19/standard-photos-response-apis-for-civilized-age/&quot;&gt;standard photo response&lt;/a&gt;.  Additionally if the gallery creator has included a comment with the photo this will be then the photo element will have the attribute has_comment=&quot;1&quot; and the child element &quot;comment&quot; will be present.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="gallery_id" optional="0">The ID of the gallery of photos to return</argument>
+	<argument name="extras" optional="1">A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;date_upload&lt;/code&gt;, &lt;code&gt;date_taken&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;icon_server&lt;/code&gt;, &lt;code&gt;original_format&lt;/code&gt;, &lt;code&gt;last_update&lt;/code&gt;, &lt;code&gt;geo&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;, &lt;code&gt;machine_tags&lt;/code&gt;, &lt;code&gt;o_dims&lt;/code&gt;, &lt;code&gt;views&lt;/code&gt;, &lt;code&gt;media&lt;/code&gt;, &lt;code&gt;path_alias&lt;/code&gt;, &lt;code&gt;url_sq&lt;/code&gt;, &lt;code&gt;url_t&lt;/code&gt;, &lt;code&gt;url_s&lt;/code&gt;, &lt;code&gt;url_m&lt;/code&gt;, &lt;code&gt;url_o&lt;/code&gt;</argument>
+	<argument name="per_page" optional="1">Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.photos.search" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a list of photos matching some criteria. Only photos visible to the calling user will be returned. To return private or semi-private photos, the caller must be authenticated with 'read' permissions, and have permission to view the photos. Unauthenticated calls will only return public photos.</description>
+	<explanation>Please note that Flickr will return at most the first 4,000 results for any given search query.  If this is an issue, we recommend trying a more specific query.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="user_id" optional="1">The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched. A value of &quot;me&quot; will search against the calling user's photos for authenticated calls.</argument>
+	<argument name="tags" optional="1">A comma-delimited list of tags. Photos with one or more of the tags listed will be returned. You can exclude results that match a term by prepending it with a - character.</argument>
+	<argument name="tag_mode" optional="1">Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.</argument>
+	<argument name="text" optional="1">A free text search. Photos who's title, description or tags contain the text will be returned. You can exclude results that match a term by prepending it with a - character.</argument>
+	<argument name="min_upload_date" optional="1">Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.</argument>
+	<argument name="max_upload_date" optional="1">Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.</argument>
+	<argument name="min_taken_date" optional="1">Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date can be in the form of a mysql datetime or unix timestamp.</argument>
+	<argument name="max_taken_date" optional="1">Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date can be in the form of a mysql datetime or unix timestamp.</argument>
+	<argument name="license" optional="1">The license id for photos (for possible values see the flickr.photos.licenses.getInfo method). Multiple licenses may be comma-separated.</argument>
+	<argument name="sort" optional="1">The order in which to sort returned photos. Deafults to date-posted-desc (unless you are doing a radial geo query, in which case the default sorting is by ascending distance from the point specified). The possible values are: date-posted-asc, date-posted-desc, date-taken-asc, date-taken-desc, interestingness-desc, interestingness-asc, and relevance.</argument>
+	<argument name="privacy_filter" optional="1">Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:
+&lt;ul&gt;
+&lt;li&gt;1 public photos&lt;/li&gt;
+&lt;li&gt;2 private photos visible to friends&lt;/li&gt;
+&lt;li&gt;3 private photos visible to family&lt;/li&gt;
+&lt;li&gt;4 private photos visible to friends &amp; family&lt;/li&gt;
+&lt;li&gt;5 completely private photos&lt;/li&gt;
+&lt;/ul&gt;
+</argument>
+	<argument name="bbox" optional="1">A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched.
+&lt;br /&gt;&lt;br /&gt;
+The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
+&lt;br /&gt;&lt;br /&gt;
+Longitude has a range of -180 to 180 , latitude of -90 to 90. Defaults to -180, -90, 180, 90 if not specified.
+&lt;br /&gt;&lt;br /&gt;
+Unlike standard photo queries, geo (or bounding box) queries will only return 250 results per page.
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;#8212; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="accuracy" optional="1">Recorded accuracy level of the location information.  Current range is 1-16 : 
+
+&lt;ul&gt;
+&lt;li&gt;World level is 1&lt;/li&gt;
+&lt;li&gt;Country is ~3&lt;/li&gt;
+&lt;li&gt;Region is ~6&lt;/li&gt;
+&lt;li&gt;City is ~11&lt;/li&gt;
+&lt;li&gt;Street is ~16&lt;/li&gt;
+&lt;/ul&gt;
+
+Defaults to maximum value if not specified.</argument>
+	<argument name="safe_search" optional="1">Safe search setting:
+
+&lt;ul&gt;
+&lt;li&gt;1 for safe.&lt;/li&gt;
+&lt;li&gt;2 for moderate.&lt;/li&gt;
+&lt;li&gt;3 for restricted.&lt;/li&gt;
+&lt;/ul&gt;
+
+(Please note: Un-authed calls can only see Safe content.)</argument>
+	<argument name="content_type" optional="1">Content Type setting:
+&lt;ul&gt;
+&lt;li&gt;1 for photos only.&lt;/li&gt;
+&lt;li&gt;2 for screenshots only.&lt;/li&gt;
+&lt;li&gt;3 for 'other' only.&lt;/li&gt;
+&lt;li&gt;4 for photos and screenshots.&lt;/li&gt;
+&lt;li&gt;5 for screenshots and 'other'.&lt;/li&gt;
+&lt;li&gt;6 for photos and 'other'.&lt;/li&gt;
+&lt;li&gt;7 for photos, screenshots, and 'other' (all).&lt;/li&gt;
+&lt;/ul&gt;</argument>
+	<argument name="machine_tags" optional="1">Aside from passing in a fully formed machine tag, there is a special syntax for searching on specific properties :
+
+&lt;ul&gt;
+  &lt;li&gt;Find photos using the 'dc' namespace :    &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;dc:&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt; Find photos with a title in the 'dc' namespace : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;dc:title=&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt;Find photos titled &quot;mr. camera&quot; in the 'dc' namespace : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;dc:title=\&quot;mr. camera\&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt;Find photos whose value is &quot;mr. camera&quot; : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;*:*=\&quot;mr. camera\&quot;&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt;Find photos that have a title, in any namespace : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;*:title=&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt;Find photos that have a title, in any namespace, whose value is &quot;mr. camera&quot; : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;*:title=\&quot;mr. camera\&quot;&quot;&lt;/code&gt;&lt;/li&gt;
+
+  &lt;li&gt;Find photos, in the 'dc' namespace whose value is &quot;mr. camera&quot; : &lt;code&gt;&quot;machine_tags&quot; =&gt; &quot;dc:*=\&quot;mr. camera\&quot;&quot;&lt;/code&gt;&lt;/li&gt;
+
+ &lt;/ul&gt;
+
+Multiple machine tags may be queried by passing a comma-separated list. The number of machine tags you can pass in a single query depends on the tag mode (AND or OR) that you are querying with. &quot;AND&quot; queries are limited to (16) machine tags. &quot;OR&quot; queries are limited
+to (8).</argument>
+	<argument name="machine_tag_mode" optional="1">Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.</argument>
+	<argument name="group_id" optional="1">The id of a group who's pool to search.  If specified, only matching photos posted to the group's pool will be returned.</argument>
+	<argument name="faves" optional="1">boolean. Pass faves=1 along with your user_id to search within your favorites</argument>
+	<argument name="camera" optional="1">Limit results by camera.  Camera names must be in the &lt;a href=&quot;http://www.flickr.com/cameras&quot;&gt;Camera Finder&lt;/a&gt; normalized form.  &lt;a href=&quot;http://flickr.com/services/api/flickr.cameras.getList&quot;&gt;flickr.cameras.getList()&lt;/a&gt; returns a list of searchable cameras.</argument>
+	<argument name="jump_to" optional="1">Jump, jump!</argument>
+	<argument name="contacts" optional="1">Search your contacts. Either 'all' or 'ff' for just friends and family. (Experimental)</argument>
+	<argument name="woe_id" optional="1">A 32-bit identifier that uniquely represents spatial entities. (not used if bbox argument is present). 
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="place_id" optional="1">A Flickr place id.  (not used if bbox argument is present).
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="media" optional="1">Filter results by media type. Possible values are &lt;code&gt;all&lt;/code&gt; (default), &lt;code&gt;photos&lt;/code&gt; or &lt;code&gt;videos&lt;/code&gt;</argument>
+	<argument name="has_geo" optional="1">Any photo that has been geotagged, or if the value is &quot;0&quot; any photo that has &lt;i&gt;not&lt;/i&gt; been geotagged.
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="geo_context" optional="1">Geo context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to search for photos that were taken &quot;indoors&quot; or &quot;outdoors&quot;. &lt;br /&gt;&lt;br /&gt;
+The current list of context IDs is :&lt;br /&gt;&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;0&lt;/strong&gt;, not defined.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1&lt;/strong&gt;, indoors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2&lt;/strong&gt;, outdoors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="lat" optional="1">A valid latitude, in decimal format, for doing radial geo queries.
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="lon" optional="1">A valid longitude, in decimal format, for doing radial geo queries.
+&lt;br /&gt;&lt;br /&gt;
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+&lt;br /&gt;&lt;br /&gt;
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &amp;emdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).</argument>
+	<argument name="radius" optional="1">A valid radius used for geo queries, greater than zero and less than 20 miles (or 32 kilometers), for use with point-based geo queries. The default value is 5 (km).</argument>
+	<argument name="radius_units" optional="1">The unit of measure when doing radial geo queries. Valid options are &quot;mi&quot; (miles) and &quot;km&quot; (kilometers). The default is &quot;km&quot;.</argument>
+	<argument name="is_commons" optional="1">Limit the scope of the search to only photos that are part of the &lt;a href=&quot;http://flickr.com/commons&quot;&gt;Flickr Commons project&lt;/a&gt;. Default is false.</argument>
+	<argument name="in_gallery" optional="1">Limit the scope of the search to only photos that are in a &lt;a href=&quot;http://www.flickr.com/help/galleries/&quot;&gt;gallery&lt;/a&gt;?  Default is false, search all photos.</argument>
+	<argument name="person_id" optional="1">The id of a user.  Will return photos where the user has been people tagged.  A call signed as the person_id in question will return *all* photos the user in, otherwise returns public photos.</argument>
+	<argument name="is_getty" optional="1">Limit the scope of the search to only photos that are for sale on Getty. Default is false.</argument>
+	<argument name="extras" optional="1">A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;date_upload&lt;/code&gt;, &lt;code&gt;date_taken&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;icon_server&lt;/code&gt;, &lt;code&gt;original_format&lt;/code&gt;, &lt;code&gt;last_update&lt;/code&gt;, &lt;code&gt;geo&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;, &lt;code&gt;machine_tags&lt;/code&gt;, &lt;code&gt;o_dims&lt;/code&gt;, &lt;code&gt;views&lt;/code&gt;, &lt;code&gt;media&lt;/code&gt;, &lt;code&gt;path_alias&lt;/code&gt;, &lt;code&gt;url_sq&lt;/code&gt;, &lt;code&gt;url_t&lt;/code&gt;, &lt;code&gt;url_s&lt;/code&gt;, &lt;code&gt;url_m&lt;/code&gt;, &lt;code&gt;url_o&lt;/code&gt;</argument>
+	<argument name="per_page" optional="1">Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>

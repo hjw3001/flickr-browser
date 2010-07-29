@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">
+<method name="flickr.machinetags.getNamespaces" needslogin="0" needssigning="0" requiredperms="0">
+	<description>Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.</description>
+	<response>&lt;namespaces page=&quot;1&quot; total=&quot;5&quot; perpage=&quot;500&quot; pages=&quot;1&quot;&gt;
+  &lt;namespace usage=&quot;6538&quot; predicates=&quot;13&quot;&gt;aero&lt;/namespace&gt;
+  &lt;namespace usage=&quot;9072&quot; predicates=&quot;24&quot;&gt;flickr&lt;/namespace&gt;
+  &lt;namespace usage=&quot;670270&quot; predicates=&quot;35&quot;&gt;geo&lt;/namespace&gt;
+  &lt;namespace usage=&quot;23903&quot; predicates=&quot;36&quot;&gt;taxonomy&lt;/namespace&gt;
+  &lt;namespace usage=&quot;50449&quot; predicates=&quot;4&quot;&gt;upcoming&lt;/namespace&gt;
+&lt;/namespace&gt;
+</response>
+	<explanation>&quot;Usage&quot; gives you roughly how popular a machine tags, while &quot;predicates&quot; is the count of distinct predicates a namespace has.</explanation>
+</method>
+<arguments>
+	<argument name="api_key" optional="0">Your API application key. &lt;a href=&quot;/services/api/misc.api_keys.html&quot;&gt;See here&lt;/a&gt; for more details.</argument>
+	<argument name="predicate" optional="1">Limit the list of namespaces returned to those that have the following predicate.</argument>
+	<argument name="per_page" optional="1">Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.</argument>
+	<argument name="page" optional="1">The page of results to return. If this argument is omitted, it defaults to 1.</argument>
+</arguments>
+<errors>
+	<error code="1" message="Not a valid date.">The date argument passed was incorrect.</error>
+	<error code="100" message="Invalid API Key">The API key passed was not valid or has expired.</error>
+	<error code="105" message="Service currently unavailable">The requested service is temporarily unavailable.</error>
+	<error code="111" message="Format &quot;xxx&quot; not found">The requested response format was not found.</error>
+	<error code="112" message="Method &quot;xxx&quot; not found">The requested method was not found.</error>
+	<error code="114" message="Invalid SOAP envelope">The SOAP envelope send in the request could not be parsed.</error>
+	<error code="115" message="Invalid XML-RPC Method Call">The XML-RPC request document could not be parsed.</error>
+	<error code="116" message="Bad URL found">One or more arguments contained a URL that has been used for abuse on Flickr.</error>
+</errors>
+</rsp>
