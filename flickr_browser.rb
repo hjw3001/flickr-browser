@@ -14,10 +14,12 @@ module FlickrBrowser
     def load_data
       @xml_files = Array.new
       directory = File.expand_path(File.dirname(__FILE__))
+      current_directory = Dir.getwd
       Dir.chdir("#{directory}/data")
       Dir["*.xml"].each { |xml_file|
         @xml_files << XMLObject.new(File.open(xml_file))
       }
+      Dir.chdir(current_directory)
     end
   end
 end
